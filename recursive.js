@@ -53,3 +53,13 @@ function sumOfArray(array){
 
 // console.log(sumOfArray([0,1,2,3,4,5,6,7,8,9,10])) // 55 
 
+function findSmallestInArray(array, smallest = array[array.length - 1]){
+    if (!array.length) return smallest;
+    else {
+        let last = array.pop();
+        if (last < smallest) {smallest = last}
+        return findSmallestInArray(array, smallest)
+    }
+}
+
+// console.log(findSmallestInArray([45, 10, 100]))
