@@ -63,3 +63,15 @@ function findSmallestInArray(array, smallest = array[array.length - 1]){
 }
 
 // console.log(findSmallestInArray([45, 10, 100]))
+
+
+function findLargestInArray(array, largest = array[array.length - 1]){
+    if (!array.length) return largest;
+    else {
+        let last = array.pop();
+        if (last > largest) {largest = last}
+        return findLargestInArray(array, largest)
+    }
+}
+
+// console.log(findLargestInArray([45, 100, 10]))
