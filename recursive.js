@@ -16,7 +16,9 @@ function recursiveIncludes(subString, string, subStringArray = subString.split("
 // console.log(recursiveIncludes("hello", "hllo world"))
 
 function recursiveFactorial(num) {
+    //base case
     if (num === 1) return 1;
+    //recursive call with recursive step
     return num * factorial(num - 1);
 }
 
@@ -39,15 +41,5 @@ function fibonacci(num, res = [0, 1], counter = 2){
         return fibonacci(num, res, counter)
     }
 }
-console.log(fibonacci(-1)) //null
-// console.log(fibonacci(0)) //0
-// console.log(fibonacci(1)) //1
-// console.log(fibonacci(2)) //1
-// console.log(fibonacci(3)) //2
-// console.log(fibonacci(4)) //3
-// console.log(fibonacci(5)) //5
-// console.log(fibonacci(6)) //8
-// console.log(fibonacci(7)) //13
-// console.log(fibonacci(8)) //21
-// console.log(fibonacci(9)) //34
-// console.log(fibonacci(10)) //55
+// showFibonacci = (start, end = start + 1) => {for (let i = start; i <= end; i++){console.log(fibonacci(i))}};
+// showFibonacci(0, 10);
