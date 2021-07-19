@@ -24,7 +24,7 @@ function recursiveFactorial(num) {
 
 // console.log(factorial(4))
 
-function fibonacci(num, res = [0, 1], counter = 2){
+function fibonacci(num, res = [0, 1], counter = 2) {
     //defensive case 1
     if (num < 0) return null;
     //defensive case 2
@@ -44,7 +44,7 @@ function fibonacci(num, res = [0, 1], counter = 2){
 // showFibonacci = (start, end = start + 1) => {for (let i = start; i <= end; i++){console.log(fibonacci(i))}};
 // showFibonacci(0, 10);
 
-function sumOfArray(array){
+function sumOfArray(array) {
     //base case
     if (!array.length) return 0;
     //recursive step and recursive call
@@ -53,7 +53,7 @@ function sumOfArray(array){
 
 // console.log(sumOfArray([0,1,2,3,4,5,6,7,8,9,10])) // 55 
 
-function findSmallestInArray(array, tempArray = [...array],smallest = tempArray[tempArray.length - 1], index = tempArray.length, counter = tempArray.length){
+function findSmallestInArray(array, tempArray = [...array], smallest = tempArray[tempArray.length - 1], index = tempArray.length, counter = tempArray.length) {
     //base case
     if (!tempArray.length) return [smallest, index];
     //recursive case
@@ -61,7 +61,7 @@ function findSmallestInArray(array, tempArray = [...array],smallest = tempArray[
         counter--;
         //recursive step
         let last = tempArray.pop();
-        if (last <= smallest) {smallest = last; index = counter};
+        if (last <= smallest) { smallest = last; index = counter };
         //recursive call
         return findSmallestInArray(array, tempArray, smallest, index, counter);
     }
@@ -70,7 +70,7 @@ function findSmallestInArray(array, tempArray = [...array],smallest = tempArray[
 // console.log(findSmallestInArray([45, 1000, 100]))
 
 
-function findLargestInArray(array, tempArray = [...array],largest = tempArray[tempArray.length - 1], index = tempArray.length, counter = tempArray.length){
+function findLargestInArray(array, tempArray = [...array], largest = tempArray[tempArray.length - 1], index = tempArray.length, counter = tempArray.length) {
     //base case
     if (!tempArray.length) return [largest, index];
     //recursive case
@@ -78,7 +78,7 @@ function findLargestInArray(array, tempArray = [...array],largest = tempArray[te
         counter--;
         //recursive step
         let last = tempArray.pop();
-        if (last >= largest) {largest = last; index = counter};
+        if (last >= largest) { largest = last; index = counter };
         //recursive call
         return findLargestInArray(array, tempArray, largest, index, counter);
     }
@@ -88,7 +88,7 @@ function findLargestInArray(array, tempArray = [...array],largest = tempArray[te
 
 function increasingSort(array, tempArray = [...array], res = []) {
     //base case
-    if (!tempArray.length){debugger; return res;}
+    if (!tempArray.length) { debugger; return res; }
     //recursive case
     else {
         let [smallest, index] = [...findSmallestInArray(tempArray)];
@@ -105,7 +105,7 @@ function increasingSort(array, tempArray = [...array], res = []) {
 
 function decreasingSort(array, tempArray = [...array], res = []) {
     //base case
-    if (!tempArray.length){debugger; return res;}
+    if (!tempArray.length) { debugger; return res; }
     //recursive case
     else {
         let [largest, index] = [...findLargestInArray(tempArray)];
@@ -119,7 +119,7 @@ function decreasingSort(array, tempArray = [...array], res = []) {
 
 // console.log(decreasingSort([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
 
-function recursiveSlice(array, start, end, res = []){
+function recursiveSlice(array, start, end, res = []) {
     //base case
     if (start === end) return res;
     //recursive case
@@ -132,5 +132,30 @@ function recursiveSlice(array, start, end, res = []){
 
 // console.log(recursiveSlice([0,1,2,3,4,5,6,7,8,9,10], 4, 8))
 
+function recursivesplice(array, start, countToBeRemoved = 0, itemsToBeInserted = [], res = [], removed = false, index = -1) {
+    debugger;
+    if (!removed && !countToBeRemoved) { return [...array, ...[itemsToBeInserted]]; }//splice([1,2,3,4,5],0,0,1,2,3)
+    if (removed && !countToBeRemoved) { return [...res, ...[itemsToBeInserted, ...array]]; } //splice([1,2,3,4,5],0, 1, 1,2,3)
+    if (countToBeRemoved > 0) {
+        if (!start) { return null } else {
+            if (index < start) {
+                debugger;
+                res.push(array.shift()); 
+                index++;
+                return recursivesplice(array, start, countToBeRemoved, itemsToBeInserted, res, removed, index)
+            } else if (index === start) {
+                debugger;
+                array.shift(); 
+                removed = true; 
+                countToBeRemoved--; 
+                start++; 
+                index++;
+                return recursivesplice(array, start, countToBeRemoved, itemsToBeInserted, res, removed, index)
+            }
+        }
+    }
+}
 
+console.log(recursivesplice([0, 1, 2, 3, 4, 5], 2, 1, "three")) //[0,1,2,three,4,5]
+console.log(recursivesplice([0, 1, 2, 3, 4, 5], 0, 0, 6, "hello"))
 
