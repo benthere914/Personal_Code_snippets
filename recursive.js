@@ -95,4 +95,21 @@ function increasingSort(array, tempArray = [...array], res = []) {
 // console.log(increasingSort([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]))
 
 
+function decreasingSort(array, tempArray = [...array], res = []) {
+    debugger;
+    if (!tempArray.length){debugger; return res;}
+    else {
+        let [largest, index] = [...findLargestInArray(tempArray)];
+        debugger
+        res.push(largest);
+        debugger;
+        tempArray.splice(index, 1);
+        debugger;
+        return decreasingSort(array, tempArray, res);
+    }
+}
+
+// console.log(decreasingSort([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+
+
 
