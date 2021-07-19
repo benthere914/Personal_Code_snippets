@@ -119,5 +119,18 @@ function decreasingSort(array, tempArray = [...array], res = []) {
 
 // console.log(decreasingSort([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
 
+function recursiveSlice(array, start, end, res = []){
+    //base case
+    if (start === end) return res;
+    //recursive case
+    else {
+        res.push(array[start])
+        //recursive call and recursive step
+        return recursiveSlice(array, start + 1, end, res)
+    }
+}
+
+// console.log(recursiveSlice([0,1,2,3,4,5,6,7,8,9,10], 4, 8))
+
 
 
