@@ -54,13 +54,12 @@ function sumOfArray(array){
 // console.log(sumOfArray([0,1,2,3,4,5,6,7,8,9,10])) // 55 
 
 function findSmallestInArray(array, tempArray = [...array],smallest = tempArray[tempArray.length - 1], index = tempArray.length, counter = tempArray.length){
-    debugger;
     if (!tempArray.length) return [smallest, index];
     else {
         counter--;
         let last = tempArray.pop();
         if (last <= smallest) {smallest = last; index = counter};
-        return findSmallestInArray(array, tempArray, smallest, index, counter)
+        return findSmallestInArray(array, tempArray, smallest, index, counter);
     }
 }
 
@@ -73,10 +72,27 @@ function findLargestInArray(array, tempArray = [...array],largest = tempArray[te
         counter--;
         let last = tempArray.pop();
         if (last >= largest) {largest = last; index = counter};
-        return findLargestInArray(array, tempArray, largest, index, counter)
+        return findLargestInArray(array, tempArray, largest, index, counter);
     }
 }
 
 // console.log(findLargestInArray([45, 100, 10]))
+
+function increasingSort(array, tempArray = [...array], res = []) {
+    debugger;
+    if (!tempArray.length){debugger; return res;}
+    else {
+        let [smallest, index] = [...findSmallestInArray(tempArray)];
+        debugger
+        res.push(smallest);
+        debugger;
+        tempArray.splice(index, 1);
+        debugger;
+        return increasingSort(array, tempArray, res);
+    }
+}
+
+// console.log(increasingSort([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]))
+
 
 
