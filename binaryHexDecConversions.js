@@ -1,4 +1,4 @@
-function hexToDec(input){
+function hexToDec1Character(input){
     if(!input){return null}
     input = input.toLowerCase()
     switch (input){
@@ -39,7 +39,20 @@ function hexToDec(input){
 }
 
 
-function binaryToHex(input){
+
+function hexToDecMultiCharacter(hex){
+
+    let output = 0;
+    let start = 0;
+    for (let i = hex.length - 1; i > -1; i--){
+        let ele = ((16 ** start) * hexToDec1Character(hex[i]));
+        output += ele
+        start++;
+    }
+    return output;
+}
+
+function fourDigitBinaryToHex(input){
     if(!input){return null}
     input = input.toLowerCase()
     switch (input){
@@ -79,6 +92,8 @@ function binaryToHex(input){
     return null;
 }
 
+
+
 function binaryToDec(input){
     let output = 0;
     let start = 0;
@@ -92,4 +107,4 @@ function binaryToDec(input){
 
 }
 
-console.log(binaryToDec("11111111"))
+// console.log(binaryToDec("11111111"))
