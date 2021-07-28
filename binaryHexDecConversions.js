@@ -51,7 +51,24 @@ function hexToDecMultiCharacter(hex){
     }
     return output;
 }
-
+function multiBinaryToMultiHex(binary){
+    let resArr = [];
+    binary = binary.split(" ").join("")
+    if (!(binary.length % 4 === 0)){
+        console.log("Binary length not vaid must be in groups of 4");
+        return null
+    }
+    for (let i = 0; i < binary.length; i += 4){
+        let digit1 = binary[i];
+        let digit2 = binary[i + 1];
+        let digit3 = binary[i + 2];
+        let digit4 = binary[i + 3];
+        let fourDigits = [...digit1, ...digit2, ...digit3, ...digit4].join("")
+        resArr.push(fourDigitBinaryToHex(fourDigits))
+    }
+    return resArr.join("")
+}
+console.log(multiBinaryToMultiHex("1111 0000 0 011"))
 function fourDigitBinaryToHex(input){
     if(!input){return null}
     input = input.toLowerCase()
@@ -77,17 +94,17 @@ function fourDigitBinaryToHex(input){
         case "1001":
             return 9;
         case "1010":
-            return 10;
+            return "a";
         case "1011": 
-            return 11;
+            return "b";
         case "1100": 
-            return 12;
+            return "c";
         case "1101":
-            return 13;
+            return "d";
         case "1110":
-            return 14;
+            return "e";
         case "1111":
-            return 15;
+            return "f";
     }
     return null;
 }
