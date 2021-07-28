@@ -1,7 +1,7 @@
-function hexToDec1Character(input){
-    if(!input){return null}
-    input = input.toLowerCase()
-    switch (input){
+function hexToDec(hex){
+    if(!hex){return null}
+    hex = hex.toLowerCase()
+    switch (hex){
         case "0":
             return 0;
         case "1": 
@@ -38,41 +38,21 @@ function hexToDec1Character(input){
     return null;
 }
 
-
-
-function hexToDecMultiCharacter(hex){
-
+function hexToDecMulti(hex){
     let output = 0;
     let start = 0;
     for (let i = hex.length - 1; i > -1; i--){
-        let ele = ((16 ** start) * hexToDec1Character(hex[i]));
+        let ele = ((16 ** start) * hexToDec(hex[i]));
         output += ele
         start++;
     }
     return output;
 }
-function multiBinaryToMultiHex(binary){
-    let resArr = [];
-    binary = binary.split(" ").join("")
-    if (!(binary.length % 4 === 0)){
-        console.log("Binary length not vaid must be in groups of 4");
-        return null
-    }
-    for (let i = 0; i < binary.length; i += 4){
-        let digit1 = binary[i];
-        let digit2 = binary[i + 1];
-        let digit3 = binary[i + 2];
-        let digit4 = binary[i + 3];
-        let fourDigits = [...digit1, ...digit2, ...digit3, ...digit4].join("")
-        resArr.push(fourDigitBinaryToHex(fourDigits))
-    }
-    return resArr.join("")
-}
-console.log(multiBinaryToMultiHex("1111 0000 0 011"))
-function fourDigitBinaryToHex(input){
-    if(!input){return null}
-    input = input.toLowerCase()
-    switch (input){
+
+function binaryToHex(binary){
+    if(!binary){return null}
+    binary = binary.toLowerCase()
+    switch (binary){
         case "0000":
             return 0;
         case "0001": 
@@ -109,19 +89,32 @@ function fourDigitBinaryToHex(input){
     return null;
 }
 
+function BinaryToHexMulti(binary){
+    let resArr = [];
+    binary = binary.split(" ").join("")
+    if (!(binary.length % 4 === 0)){
+        console.log("Binary length not vaid must be in groups of 4");
+        return null
+    }
+    for (let i = 0; i < binary.length; i += 4){
+        let digit1 = binary[i];
+        let digit2 = binary[i + 1];
+        let digit3 = binary[i + 2];
+        let digit4 = binary[i + 3];
+        let fourDigits = [...digit1, ...digit2, ...digit3, ...digit4].join("")
+        resArr.push(binaryToHex(fourDigits))
+    }
+    return resArr.join("")
+}
 
-
-function binaryToDec(input){
+function binaryToDec(binary){
     let output = 0;
     let start = 0;
-    for (let i = input.length - 1; i > -1; i--){
-        let ele = ((2 ** start) * input[i]);
+    for (let i = binary.length - 1; i > -1; i--){
+        let ele = ((2 ** start) * binary[i]);
         output += ele
         start++;
     }
     return output;
-
-
 }
 
-// console.log(binaryToDec("11111111"))
