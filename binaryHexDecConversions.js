@@ -79,4 +79,17 @@ function binaryToHex(input){
     return null;
 }
 
-console.log(binaryToHex("0100"))
+function binaryToDec(input){
+    let output = 0;
+    let start = 0;
+    for (let i = input.length - 1; i > -1; i--){
+        let ele = ((2 ** start) * input[i]);
+        output += ele
+        start++;
+    }
+    return output;
+
+
+}
+
+console.log(binaryToDec("11111111"))
