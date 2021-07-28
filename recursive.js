@@ -134,9 +134,8 @@ function recursiveSlice(array, start, end, res = []) {
 
 function recursivesplice(array, start, countToBeRemoved = 0, itemsToBeInserted = [], res = [], removed = false, index = -1) {
     debugger;
-    if (!removed && !countToBeRemoved) { return [...array, ...[itemsToBeInserted]]; }//splice([1,2,3,4,5],0,0,1,2,3)
-    if (removed && !countToBeRemoved) { return [...res, ...[itemsToBeInserted, ...array]]; } //splice([1,2,3,4,5],0, 1, 1,2,3)
-    if (countToBeRemoved > 0) {
+    if (!removed && !countToBeRemoved) { return [...res, ...[itemsToBeInserted], ...array]; }
+    if (removed && !countToBeRemoved) { return [...res, ...[itemsToBeInserted, ...array]]; } 
         if (!start) { return null } else {
             if (index < start) {
                 debugger;
@@ -153,7 +152,7 @@ function recursivesplice(array, start, countToBeRemoved = 0, itemsToBeInserted =
                 return recursivesplice(array, start, countToBeRemoved, itemsToBeInserted, res, removed, index)
             }
         }
-    }
+    
 }
 
 console.log(recursivesplice([0, 1, 2, 3, 4, 5], 2, 1, "three")) //[0,1,2,three,4,5]
