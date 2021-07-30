@@ -1,3 +1,23 @@
+//Ugly Binary to Pretty Binary
+function binaryToPretty(uglyBinary, bitSize = 8, spaced) {
+  uglyBinary = uglyBinary.split(" ").join("").split("");
+  let output = [];
+  while (uglyBinary.length % bitSize !== 0) {
+    uglyBinary.unshift("0");
+  }
+  if (spaced) {
+    while (uglyBinary.length) {
+      let bits = uglyBinary.slice(0, bitSize);
+      uglyBinary.splice(0, bitSize);
+      output.push(bits.join(""));
+      output.push(" ");
+    }
+    return output.join(" ");
+  }else {
+      return uglyBinary.join("")
+  }
+}
+
 //Hexadecimal to Decimal:
 function hexToDec(hexStr) {
   let decStr = parseInt(hexStr, 16);
@@ -8,13 +28,12 @@ function hexToDec(hexStr) {
 function hexToBin(hexStr) {
   let output = [];
   hexStr = hexStr.split("");
-  console.log(hexStr);
   while (hexStr.length) {
     let binary = parseInt(hexStr[0], 16).toString(2);
     hexStr.splice(0, 1);
     output.push(binary);
   }
-  return output.join("");
+  return binaryToPretty(output.join(""), 4, true);
 }
 
 //Hexadecimal to ASCII:
@@ -42,7 +61,7 @@ function decToHex(decimal) {
 //Decimal to Binary:
 function decToBin(decimal) {
   let binary = decimal.toString(2);
-  return binary;
+  return binaryToPretty(binary, 8, true);
 }
 
 //Decimal to Ascii
@@ -59,33 +78,36 @@ function decToAscii(decimal) {
 
 //Binary to Hexadecimal
 function binToHex(binary) {
-  let binaryFourBits = binary.split(" ");
-  let outPut = [];
-  while (binaryFourBits.length) {
-    let fourBits = binaryFourBits.shift();
-    let decimal = parseInt(fourBits, 2);
-    let hex = decimal.toString(16);
-    outPut.push(hex);
-  }
-  return outPut.join("");
+    binary = binaryToPretty(binary, 4, true)
+    let binaryFourBits = binary.split(" ");
+    let outPut = [];
+    while (binaryFourBits.length) {
+        let fourBits = binaryFourBits.shift();
+        let decimal = parseInt(fourBits, 2);
+        let hex = decimal.toString(16);
+        outPut.push(hex);
+    }
+    return outPut.join("");
 }
 
 //Binary to Decimal
 function binToDec(binaryBlob) {
-  let decimal = parseInt(binaryBlob, 2);
-  return decimal;
+    let binary = binaryToPretty(binaryBlob)
+    let decimal = parseInt(binary, 2);
+    return decimal;
 }
 
 //Binary to ASCII:
-function binToASCII(binaryBlob) {
-  let output = [];
-  let binaryArray = binaryBlob.split(" ");
-  for (let i = 0; i < binaryArray.length; i++) {
-    let charCode = parseInt(binaryArray[i], 2);
-    let char = String.fromCharCode(charCode);
-    output.push(char);
-  }
-  return output.join("");
+function binToASCII(binary) {
+    binary = binaryToPretty(binary, 8, true)
+    let output = [];
+    let binaryArray = binary.split(" ");
+    for (let i = 0; i < binaryArray.length; i++) {
+        let charCode = parseInt(binaryArray[i], 2);
+        let char = String.fromCharCode(charCode);
+        output.push(char);
+    }
+    return output.join("");
 }
 
 //ASCII to Hexadecimal:
@@ -122,7 +144,7 @@ function ASCIIToBin(ASCIIStr) {
     output.push("0");
     output.push(binary);
   }
-  return output.join("");
+  return binaryToPretty(output.join(""), 8, true);
 }
 /********************************* */
 
