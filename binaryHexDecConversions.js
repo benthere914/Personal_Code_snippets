@@ -17,7 +17,13 @@ function binaryToPretty(uglyBinary, bitSize = 8, spaced) {
     return uglyBinary.join("");
   }
 }
+// console.log(binaryToPretty("0 0 0110101 1101 101 101 1", 4, true))
+// console.log(binaryToPretty("00011010111011011011", 8, true))
+// console.log(binaryToPretty("00011010111011011011"))
+// console.log(binaryToPretty("0"))
+// console.log(binaryToPretty("01", 5))
 
+//Ugly Hexadecimal to pretty Hexadecimal
 function hexToPretty(uglyHex, blockSize = 2, spaced = true) {
   uglyHex = uglyHex.split(" ").join("").split("");
   let prettyHex = [];
@@ -37,6 +43,12 @@ function hexToPretty(uglyHex, blockSize = 2, spaced = true) {
   }
   return prettyHex.join("");
 }
+// console.log(hexToPretty("adfec3467", 4, true));
+// console.log(hexToPretty("adfec34675f", 8, true));
+// console.log(hexToPretty("adfec346", 8, true));
+// console.log(hexToPretty("0  e234567389    f ", 3));
+// console.log(hexToPretty(" 0  f f ", 1, true));
+
 
 //Hexadecimal to Decimal:
 function hexToDec(hexStr) {
@@ -84,7 +96,6 @@ function hexToASCII(hexStr) {
   }
   return output.join("");
 }
-
 // console.log(hexToASCII("68656c6c6f20776f726c64"))
 // console.log(hexToASCII(" 6  8   6  5 6  c 6  c 6  f 2  0 7  7 6  f 7  2   6c   6  4"))
 // console.log(hexToASCII("21 21"))
@@ -96,12 +107,24 @@ function decToHex(decimal) {
   hexidecimal = decimal.toString(16);
   return hexToPretty(hexidecimal, 2, true);
 }
+// console.log(decToHex("5"));
+// console.log(decToHex("5050"));
+// console.log(decToHex("5g"));
+// console.log(decToHex("5g5"));
+// console.log(decToHex(""));
+
 //Decimal to Binary:
 function decToBin(decimal) {
-    decimal = parseInt(decimal, 10)
+  decimal = parseInt(decimal, 10)
   let binary = decimal.toString(2);
   return binaryToPretty(binary, 8, true);
 }
+// console.log(decToBin("5"));
+// console.log(decToBin("5050"));
+// console.log(decToBin("5g"));
+// console.log(decToBin("50"));
+// console.log(decToBin(""));
+
 //Decimal to Ascii
 function decToAscii(decimal) {
   decimal = decimal.split(" ");
@@ -113,6 +136,11 @@ function decToAscii(decimal) {
   }
   return output.join("");
 }
+// console.log(decToAscii("77"));
+// console.log(decToAscii("50 32 50"));
+// console.log(decToAscii("5425"));
+// console.log(decToAscii("52"));
+// console.log(decToAscii("25"));
 
 //Binary to Hexadecimal
 function binToHex(binary) {
@@ -127,12 +155,23 @@ function binToHex(binary) {
   }
   return hexToPretty(outPut.join(""), 2, true);
 }
+// console.log(binToHex("01010"));
+// console.log(binToHex("10"));
+// console.log(binToHex("101 01 01 0"));
+// console.log(binToHex("1010 0101"));
+// console.log(binToHex(""));
+
 //Binary to Decimal
 function binToDec(binaryBlob) {
   let binary = binaryToPretty(binaryBlob);
   let decimal = parseInt(binary, 2);
   return decimal;
 }
+// console.log(binToDec("01010"));
+// console.log(binToDec("10"));
+// console.log(binToDec("101 01 01 0"));
+// console.log(binToDec("1010 0101"));
+// console.log(binToDec(""));
 
 //Binary to ASCII:
 function binToASCII(binary) {
@@ -146,6 +185,11 @@ function binToASCII(binary) {
   }
   return output.join("");
 }
+// console.log(binToASCII("01101 000 01100 101 0110 1100 0110 1100 0110 1111 0010 0000 01110 111 0110 1111 0111 0010 01101100 01100100"));
+// console.log(binToASCII("0 1 0 1 0 0 1 0"));
+// console.log(binToASCII("11 01 01 0"));
+// console.log(binToASCII("1000001"));
+// console.log(binToASCII(""));
 
 //ASCII to Hexadecimal:
 function ASCIIToHex(ASCIIStr) {
@@ -158,6 +202,12 @@ function ASCIIToHex(ASCIIStr) {
   }
   return hexToPretty(output.join(""), 2, true);
 }
+// console.log(ASCIIToHex("hello world!"));
+// console.log(ASCIIToHex("1010101"));
+// console.log(ASCIIToHex("       "));
+// console.log(ASCIIToHex("#$%^&*()"));
+// console.log(ASCIIToHex(""));
+
 
 //ASCII to Decimal:
 function ASCIIToDec(ASCIIStr) {
@@ -170,6 +220,11 @@ function ASCIIToDec(ASCIIStr) {
   }
   return output.join(" ");
 }
+// console.log(ASCIIToDec("hello world!"));
+// console.log(ASCIIToDec("1010101"));
+// console.log(ASCIIToDec("       "));
+// console.log(ASCIIToDec("#$%^&*()"));
+// console.log(ASCIIToDec(""));
 
 //ASCII to Binary:
 function ASCIIToBin(ASCIIStr) {
@@ -183,13 +238,8 @@ function ASCIIToBin(ASCIIStr) {
   }
   return binaryToPretty(output.join(""), 8, true);
 }
-/********************************* */
-
-// let arr = ["hex", "dec", "binary", "ascii"];
-// for (let i = 0; i < arr.length; i++) {
-//   for (let j = 0; j < arr.length; j++) {
-//     if (i !== j) {
-//       console.log(arr[i], arr[j]);
-//     }
-//   }
-// }
+// console.log(ASCIIToBin("hello world!"));
+// console.log(ASCIIToBin("1010101"));
+// console.log(ASCIIToBin("       "));
+// console.log(ASCIIToBin("#$%^&*()"));
+// console.log(ASCIIToBin(""));
