@@ -46,7 +46,7 @@ function hexToPretty(uglyHex, blockSize = 2, spaced = true) {
 // console.log(hexToPretty("adfec3467", 4, true));
 // console.log(hexToPretty("adfec34675f", 8, true));
 // console.log(hexToPretty("adfec346", 8, true));
-// console.log(hexToPretty("0  e234567389    f ", 3));
+// console.log(hexToPretty("0  e2 345 67 389    f ", 3));
 // console.log(hexToPretty(" 0  f f ", 1, true));
 
 
@@ -58,8 +58,8 @@ function hexToDec(hexStr) {
 }
 // console.log(hexToDec("f"));
 // console.log(hexToDec("1"))
-// console.log(hexToDec("f90234fedc"))
-// console.log(hexToDec("fdadsfasdfqdfzfg"))
+// console.log(hexToDec("f90 234fe dc"))
+// console.log(hexToDec("fdadfadfdff"))
 
 
 //Hexadecimal to Binary
